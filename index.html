@@ -1,1 +1,490 @@
-Hello and welcome to my first page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chetan Pingale | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-light: #4f8cff;
+      --secondary-light: #ffb347;
+      --bg-light: #f6f8fa;
+      --surface-light: #ffffffcc;
+      --text-light: #1a212b;
+      --accent-light: #e8eaf6;
+
+      --primary-dark: #7fd6ff;
+      --secondary-dark: #ffd166;
+      --bg-dark: #1a212b;
+      --surface-dark: #242a38cc;
+      --text-dark: #eaf6fb;
+      --accent-dark: #23283b;
+
+      --primary: var(--primary-light);
+      --secondary: var(--secondary-light);
+      --bg: var(--bg-light);
+      --surface: var(--surface-light);
+      --text: var(--text-light);
+      --accent: var(--accent-light);
+
+      --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
+      --shadow: 0 8px 32px 0 rgba(60, 72, 100, 0.14);
+    }
+    [data-theme="dark"] {
+      --primary: var(--primary-dark);
+      --secondary: var(--secondary-dark);
+      --bg: var(--bg-dark);
+      --surface: var(--surface-dark);
+      --text: var(--text-dark);
+      --accent: var(--accent-dark);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: var(--primary-dark);
+        --secondary: var(--secondary-dark);
+        --bg: var(--bg-dark);
+        --surface: var(--surface-dark);
+        --text: var(--text-dark);
+        --accent: var(--accent-dark);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background var(--transition), color var(--transition);
+    }
+    nav {
+      width: 100%;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 50;
+      background: var(--surface);
+      backdrop-filter: blur(15px);
+      box-shadow: var(--shadow);
+      transition: background var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+      padding: 1.1rem 0 1rem 2rem;
+      margin: 0;
+    }
+    nav a {
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.07rem;
+      letter-spacing: 1px;
+      position: relative;
+      transition: color var(--transition);
+    }
+    nav a:after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0;
+      background: var(--primary);
+      transition: width 0.3s;
+      margin: 0 auto;
+    }
+    nav a:hover, nav a.active {
+      color: var(--primary);
+    }
+    nav a:hover:after, nav a.active:after {
+      width: 80%;
+    }
+    .theme-toggle {
+      margin-right: 1.3rem;
+      background: var(--accent);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: var(--primary);
+      font-size: 1.1rem;
+      cursor: pointer;
+      font-family: 'Montserrat',sans-serif;
+      transition: background var(--transition), color var(--transition);
+      box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+    }
+    .theme-toggle:active { filter: brightness(0.9);}
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 85vh;
+      padding-top: 6.5rem;
+      text-align: center;
+      background: linear-gradient(120deg, var(--primary)11%, var(--secondary) 88%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero .profile-img {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      border: 5px solid var(--primary);
+      box-shadow: 0 6px 24px rgba(70, 120, 255, 0.10);
+      background: var(--surface);
+      object-fit: cover;
+      margin-bottom: 1.1rem;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0);}
+      50% { transform: translateY(-15px);}
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+    .hero p {
+      font-size: 1.24rem;
+      font-family: 'Roboto', Arial, sans-serif;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      background: none;
+      color: var(--text);
+      -webkit-text-fill-color: var(--text);
+    }
+    .hero .cta-btn {
+      padding: 0.7rem 2.2rem;
+      font-size: 1.08rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      color: #fff;
+      background: var(--primary);
+      border: none;
+      border-radius: 35px;
+      box-shadow: 0 2px 14px rgba(70, 120, 255, 0.16);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 0.6rem;
+      letter-spacing: 2px;
+    }
+    .hero .cta-btn:hover {
+      background: var(--secondary);
+      color: var(--text);
+      transform: scale(1.09);
+    }
+    section {
+      max-width: 900px;
+      margin: 0 auto 3.5rem auto;
+      padding: 2.2rem 1rem 1.7rem 1rem;
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      transition: background var(--transition), color var(--transition);
+    }
+    h2 {
+      font-family: 'Montserrat',sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      text-shadow: 0 1px 6px rgba(80,120,255,0.06);
+      transition: color var(--transition);
+    }
+    .about p {
+      font-size: 1.11rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.2rem 0 0.5rem 0;
+    }
+    .skills-list span {
+      background: var(--accent);
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 16px;
+      padding: 0.47rem 1.1rem;
+      font-size: 1rem;
+      margin-bottom: 0.15rem;
+      box-shadow: 0 2px 10px rgba(80,120,255,0.05);
+      font-family: 'Montserrat',sans-serif;
+      letter-spacing: 1px;
+      transition: background var(--transition), color var(--transition);
+    }
+    .skills-list span:hover {
+      background: var(--primary);
+      color: var(--surface);
+      cursor: pointer;
+    }
+    .projects-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+    }
+    .project {
+      background: var(--accent);
+      border: 1px solid var(--primary);
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(70, 120, 255, 0.09);
+      padding: 1.4rem 1.1rem 1.2rem 1.1rem;
+      transition: transform 0.16s, box-shadow 0.16s, background var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+    .project:hover {
+      transform: translateY(-8px) scale(1.03) rotate(-1deg);
+      box-shadow: 0 12px 40px rgba(80,120,255,0.14);
+      background: var(--primary);
+      color: #fff;
+    }
+    .project h3 {
+      font-family: 'Montserrat',sans-serif;
+      margin-bottom: 0.4rem;
+      color: var(--primary);
+      font-size: 1.15rem;
+      font-weight: bold;
+      transition: color var(--transition);
+    }
+    .project:hover h3 {
+      color: #fff;
+    }
+    .project p {
+      font-size: 0.98rem;
+      color: var(--text);
+      margin-bottom: 0.7rem;
+      transition: color var(--transition);
+    }
+    .project:hover p {
+      color: #f7f7f7;
+    }
+    .project a {
+      margin-top: auto;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      font-family: 'Montserrat',sans-serif;
+      font-size: 0.99rem;
+      transition: color var(--transition);
+    }
+    .project:hover a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .contact-form label {
+      color: var(--primary);
+      font-weight: 600;
+      margin-top: 1.1rem;
+      font-size: 1.03rem;
+      font-family: 'Montserrat',sans-serif;
+      transition: color var(--transition);
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      margin-top: 0.33rem;
+      padding: 0.7rem 1rem;
+      background: var(--accent);
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 1rem;
+      font-family: 'Roboto',sans-serif;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: border var(--transition), background var(--transition), color var(--transition);
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border: 1.5px solid var(--secondary);
+    }
+    .contact-form button {
+      background: var(--primary);
+      color: #fff;
+      font-family: 'Montserrat',sans-serif;
+      font-weight: bold;
+      border: none;
+      border-radius: 20px;
+      padding: 0.8rem 2.1rem;
+      font-size: 1.05rem;
+      margin-top: 0.3rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 2px 14px rgba(80,120,255,0.08);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      letter-spacing: 1.1px;
+    }
+    .contact-form button:hover {
+      background: var(--secondary);
+      color: var(--text);
+    }
+    footer {
+      text-align: center;
+      padding: 2.2rem 1rem 1.05rem 1rem;
+      color: var(--primary);
+      font-size: 1.08rem;
+      letter-spacing: 1.2px;
+      font-family: 'Montserrat',sans-serif;
+      opacity: 0.9;
+      background: none;
+      transition: color var(--transition);
+    }
+    @media (max-width: 700px) {
+      nav ul { padding-left: 0.1rem; }
+      .hero h1 { font-size: 1.48rem; }
+      .hero .profile-img { width: 88px; height: 88px;}
+      section { padding: 1.1rem 0.4rem;}
+      .projects-list { grid-template-columns: 1fr;}
+    }
+    @media (max-width: 450px) {
+      nav ul { gap: 1rem; }
+      .skills-list { gap: 0.4rem;}
+      section { border-radius: 0;}
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <ul>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+  </nav>
+  <main>
+    <section class="hero" id="home">
+      <img src="https://avatars.githubusercontent.com/u/1027064067?v=4" alt="Chetan Pingale" class="profile-img">
+      <h1>Chetan Pingale</h1>
+      <p>Creative Web Developer & Designer<br>
+        Turning ideas into <span style="color:var(--secondary); font-weight:bold;">impactful</span> digital experiences.</p>
+      <a href="#contact" class="cta-btn">Hire Me</a>
+    </section>
+    <section id="about" class="about">
+      <h2>About Me</h2>
+      <p>
+        Hi! I'm Chetan, a passionate web developer with a knack for crafting elegant, interactive, and high-performance websites. I specialize in modern JavaScript frameworks, user-centric UI/UX, and building responsive web apps that delight users. When I'm not coding, you'll find me sketching ideas, learning new tech trends, or exploring design inspiration.
+      </p>
+    </section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>React</span>
+        <span>Node.js</span>
+        <span>TypeScript</span>
+        <span>SASS</span>
+        <span>Figma</span>
+        <span>Git</span>
+        <span>Responsive Design</span>
+      </div>
+    </section>
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+      <div class="projects-list">
+        <div class="project">
+          <h3>Modern Portfolio</h3>
+          <p>A slick, animated portfolio site built with React and SASS, featuring dynamic theming and glassmorphism effects.</p>
+          <a href="https://github.com/chetanpingale/modern-portfolio" target="_blank">GitHub Repo</a>
+        </div>
+        <div class="project">
+          <h3>Taskify App</h3>
+          <p>Task management app with real-time sync, drag-and-drop UI, and PWA support. Built using Node.js and React.</p>
+          <a href="https://github.com/chetanpingale/taskify-app" target="_blank">GitHub Repo</a>
+        </div>
+        <div class="project">
+          <h3>Design Gallery</h3>
+          <p>Showcase of creative web designs and UI experiments. Built with vanilla JS, CSS Grid, and Framer Motion.</p>
+          <a href="https://github.com/chetanpingale/design-gallery" target="_blank">GitHub Repo</a>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <form class="contact-form" action="mailto:cpingale43@gmail.com" method="POST" enctype="text/plain">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="off"/>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="off"/>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Chetan Pingale. All rights reserved.
+  </footer>
+  <script>
+    // Theme switching
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    function setThemeIcon(theme) {
+      themeToggle.textContent = theme === 'dark' ? '🌞' : '🌙';
+    }
+    function getPreferredTheme() {
+      if (localStorage.getItem('theme'))
+        return localStorage.getItem('theme');
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+        return 'dark';
+      return 'light';
+    }
+    function setTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      setThemeIcon(theme);
+    }
+    // On load
+    let currentTheme = getPreferredTheme();
+    setTheme(currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+      currentTheme = (html.getAttribute('data-theme') === 'dark') ? 'light' : 'dark';
+      setTheme(currentTheme);
+    });
+
+    // Navbar active link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    // Set active link on scroll
+    window.addEventListener('scroll', () => {
+      const fromTop = window.scrollY + 100;
+      navLinks.forEach(link => {
+        let section = document.querySelector(link.getAttribute('href'));
+        if(section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
