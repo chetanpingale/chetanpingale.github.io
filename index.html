@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,25 +14,47 @@
   />
   <style>
     :root {
-      --bg: #f0f0ff;
-      --card: white;
+      --bg-light: #f0f0ff;
+      --card-light: white;
+      --text-light: #1f2937;
+
+      --bg-dark: #0f172a;
+      --card-dark: #1e293b;
+      --text-dark: #f1f5f9;
+
       --accent: #6366f1;
-      --text: #1f2937;
     }
+
+    html[data-theme='light'] {
+      --bg: var(--bg-light);
+      --card: var(--card-light);
+      --text: var(--text-light);
+    }
+
+    html[data-theme='dark'] {
+      --bg: var(--bg-dark);
+      --card: var(--card-dark);
+      --text: var(--text-dark);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     html {
       scroll-behavior: smooth;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
     }
+
     nav {
       position: fixed;
       top: 0;
@@ -45,18 +67,20 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       z-index: 10;
       align-items: center;
+      transition: background 0.3s ease;
     }
+
     nav a {
       text-decoration: none;
       color: var(--text);
       font-weight: 600;
       transition: color 0.3s;
     }
+
     nav a:hover {
       color: var(--accent);
     }
 
-    /* Hamburger menu styles */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -65,7 +89,7 @@
       width: 25px;
       height: 22px;
       justify-content: center;
-      margin-right: auto; /* Align left */
+      margin-right: auto;
     }
 
     .menu-toggle span {
@@ -75,17 +99,25 @@
       transition: all 0.3s ease;
     }
 
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-left: auto;
+      color: var(--text);
+    }
+
     header {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 10rem 1rem 6rem;
+      padding: 12rem 1rem 6rem;
       background: linear-gradient(to right, #4f46e5, #7c3aed);
       color: white;
       clip-path: ellipse(150% 100% at 50% 0%);
     }
+
     header img {
       width: 140px;
       height: 140px;
@@ -93,14 +125,17 @@
       border: 4px solid white;
       margin-bottom: 1rem;
     }
+
     header h1 {
       font-size: 2.5rem;
       margin-bottom: 0.5rem;
     }
+
     header p {
       font-size: 1.25rem;
       max-width: 600px;
     }
+
     .btn {
       background: white;
       color: var(--accent);
@@ -114,10 +149,12 @@
       text-decoration: none;
       display: inline-block;
     }
+
     .btn:hover {
       background: #e0e7ff;
       transform: translateY(-2px);
     }
+
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -127,30 +164,36 @@
       gap: 2rem;
       animation: fadeIn 1.2s ease-in;
     }
+
     section {
       background: var(--card);
       padding: 2rem;
       border-radius: 0.75rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      transition: transform 0.3s;
+      transition: transform 0.3s, background 0.3s;
     }
+
     section:hover {
       transform: translateY(-3px);
     }
+
     h2 {
       color: var(--accent);
       font-size: 1.75rem;
       margin-bottom: 1rem;
     }
+
     ul {
       padding-left: 1.5rem;
       list-style: disc;
     }
+
     .skills {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
+
     .skills span {
       background: #eef2ff;
       padding: 0.5rem 1rem;
@@ -159,13 +202,16 @@
       font-weight: 500;
       transition: all 0.3s ease;
     }
+
     .skills span:hover {
       background: #dcd9ff;
       transform: scale(1.05);
     }
+
     .contact {
       text-align: center;
     }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -177,26 +223,25 @@
       }
     }
 
-    /* Responsive Styles */
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.75rem;
-      }
       nav {
         flex-direction: column;
         align-items: flex-start;
         gap: 0;
         padding-left: 1rem;
       }
+
       nav a {
         display: none;
         width: 100%;
         padding: 0.75rem 0;
         border-bottom: 1px solid #eee;
       }
+
       nav a.show {
         display: block;
       }
+
       .menu-toggle {
         display: flex;
         margin-bottom: 0.5rem;
@@ -206,13 +251,7 @@
 </head>
 <body>
   <nav>
-    <div
-      class="menu-toggle"
-      id="menu-toggle"
-      aria-label="Toggle menu"
-      role="button"
-      tabindex="0"
-    >
+    <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" role="button" tabindex="0">
       <span></span>
       <span></span>
       <span></span>
@@ -222,6 +261,7 @@
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
+    <div class="theme-toggle" id="theme-toggle" title="Toggle theme">🌓</div>
   </nav>
 
   <header>
@@ -237,12 +277,7 @@
     </p>
     <div>
       <a href="mailto:chetanpingale13@gmail.com" class="btn">📨 Contact Me</a>
-      <a
-        href="/ChetanPingale-resume.pdf"
-        class="btn"
-        download="ChetanPingale-resume.pdf"
-        >📄 Download Resume</a
-      >
+      <a href="/ChetanPingale-resume.pdf" class="btn" download>📄 Download Resume</a>
     </div>
   </header>
 
@@ -286,18 +321,18 @@
     <section id="skills">
       <h2>Skills</h2>
       <div class="skills">
-        <span>React.js</span
-        ><span>TypeScript</span
-        ><span>Redux</span
-        ><span>Jest</span
-        ><span>Cypress</span
-        ><span>GitHub Copilot</span
-        ><span>HTML5</span
-        ><span>CSS3</span
-        ><span>Kafka</span
-        ><span>AWS</span
-        ><span>Docker</span
-        ><span>Spring Boot</span>
+        <span>React.js</span>
+        <span>TypeScript</span>
+        <span>Redux</span>
+        <span>Jest</span>
+        <span>Cypress</span>
+        <span>GitHub Copilot</span>
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>Kafka</span>
+        <span>AWS</span>
+        <span>Docker</span>
+        <span>Spring Boot</span>
       </div>
     </section>
 
@@ -311,16 +346,14 @@
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelectorAll('nav a');
+    const themeToggle = document.getElementById('theme-toggle');
 
     function toggleMenu() {
-      navLinks.forEach((link) => {
-        link.classList.toggle('show');
-      });
+      navLinks.forEach((link) => link.classList.toggle('show'));
     }
 
     menuToggle.addEventListener('click', toggleMenu);
 
-    // Support keyboard accessibility (Enter and Space keys)
     menuToggle.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -328,11 +361,16 @@
       }
     });
 
-    // Close menu when a nav link is clicked (mobile UX)
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
         navLinks.forEach((l) => l.classList.remove('show'));
       });
+    });
+
+    themeToggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
     });
   </script>
 </body>
