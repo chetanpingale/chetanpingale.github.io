@@ -13,7 +13,6 @@
     referrerpolicy="no-referrer"
   />
   <style>
-    /* [CSS unchanged — same as your latest version] */
     :root {
       --bg-light: #f0f0ff;
       --card-light: white;
@@ -98,11 +97,71 @@
       transition: all 0.3s ease;
     }
 
-    .theme-toggle {
-      cursor: pointer;
-      font-size: 1.2rem;
-      margin-left: auto;
+    /* Fixed theme toggle styles */
+    .theme-toggle-fixed {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 1rem;
+      background: var(--card);
       color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s;
+      z-index: 100;
+    }
+
+    .theme-toggle-fixed:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .theme-toggle-fixed:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Scroll to top button styles */
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1rem;
+      background: var(--card);
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .scroll-top-btn.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .scroll-top-btn:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     header {
@@ -260,7 +319,6 @@
     <a href="#projects" class="nav-link">Projects</a>
     <a href="#skills" class="nav-link">Skills</a>
     <a href="#contact" class="nav-link">Contact</a>
-    <div class="theme-toggle" id="theme-toggle" title="Toggle theme">🌓</div>
   </nav>
 
   <header>
@@ -319,11 +377,24 @@
     </section>
   </main>
 
+  <!-- Fixed theme toggle button -->
+  <div class="theme-toggle-fixed" id="theme-toggle" title="Toggle theme" role="button" tabindex="0" aria-label="Toggle dark/light theme">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <!-- Scroll to top button -->
+  <div class="scroll-top-btn" id="scroll-top-btn" title="Scroll to top" role="button" tabindex="0" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelectorAll('nav a.nav-link');
     const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
 
+    // Mobile nav toggle
     menuToggle.addEventListener('click', () => {
       navLinks.forEach(link => link.classList.toggle('show'));
     });
@@ -337,17 +408,53 @@
 
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
-        // On mobile, hide menu after selection
         if (window.innerWidth <= 600) {
           navLinks.forEach((l) => l.classList.remove('show'));
         }
       });
     });
 
+    // Theme toggle logic with icon update
+    function updateThemeIcon() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      }
+    }
+
     themeToggle.addEventListener('click', () => {
       const html = document.documentElement;
       const isDark = html.getAttribute('data-theme') === 'dark';
       html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      updateThemeIcon();
+    });
+
+    updateThemeIcon();
+
+    // Scroll to top button visibility toggle
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+
+    // Scroll to top on click
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Keyboard accessibility for scroll top button
+    scrollTopBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
   </script>
 </body>
