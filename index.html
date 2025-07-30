@@ -4,8 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chetan Pingale – Senior Front-End Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pap6TTfNTaM6scVyj0CMyWf1VQkE5Zxu9RcsZ5Ai7tkqFbX9/kFthB44EakYxEAYxzFZHZyi0+kptE3y96G3Mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pap6TTfNTaM6scVyj0CMyWf1VQkE5Zxu9RcsZ5Ai7tkqFbX9/kFthB44EakYxEAYxzFZHZyi0+kptE3y96G3Mg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
   <style>
     :root {
       --bg: #f0f0ff;
@@ -38,6 +44,7 @@
       padding: 1rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       z-index: 10;
+      align-items: center;
     }
     nav a {
       text-decoration: none;
@@ -48,6 +55,26 @@
     nav a:hover {
       color: var(--accent);
     }
+
+    /* Hamburger menu styles */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      width: 25px;
+      height: 22px;
+      justify-content: center;
+      margin-right: auto; /* Align left */
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
     header {
       display: flex;
       flex-direction: column;
@@ -140,22 +167,56 @@
       text-align: center;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
+    /* Responsive Styles */
     @media (max-width: 600px) {
       header h1 {
         font-size: 1.75rem;
       }
       nav {
         flex-direction: column;
-        gap: 0.75rem;
+        align-items: flex-start;
+        gap: 0;
+        padding-left: 1rem;
+      }
+      nav a {
+        display: none;
+        width: 100%;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #eee;
+      }
+      nav a.show {
+        display: block;
+      }
+      .menu-toggle {
+        display: flex;
+        margin-bottom: 0.5rem;
       }
     }
   </style>
 </head>
 <body>
   <nav>
+    <div
+      class="menu-toggle"
+      id="menu-toggle"
+      aria-label="Toggle menu"
+      role="button"
+      tabindex="0"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
@@ -164,19 +225,38 @@
   </nav>
 
   <header>
-    <img src="profile.jpg" alt="Chetan Pingale" />
+    <img
+      src="profile.png"
+      alt="Chetan Pingale"
+      onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/1027064067?v=4';"
+    />
     <h1>Chetan Pingale</h1>
-    <p>Senior Front-End Engineer | React | AI-Enhanced UI | FinTech & Data Visualizations</p>
+    <p>
+      Senior Front-End Engineer | React | AI-Enhanced UI | FinTech & Data
+      Visualizations
+    </p>
     <div>
       <a href="mailto:chetanpingale13@gmail.com" class="btn">📨 Contact Me</a>
-      <a href="/ChetanPingale-resume.pdf" class="btn">📄 Download Resume</a>
+      <a
+        href="/ChetanPingale-resume.pdf"
+        class="btn"
+        download="ChetanPingale-resume.pdf"
+        >📄 Download Resume</a
+      >
     </div>
   </header>
 
   <main class="container">
     <section id="about">
       <h2>About Me</h2>
-      <p>I’m a Senior Front-End Engineer with over 9 years of experience building intuitive, data-driven, and scalable web applications. I specialize in React.js, TypeScript, and performance-optimized UIs, often collaborating with ML teams to deliver AI-integrated user experiences. I thrive in fintech environments where data accuracy, speed, and UX matter most.</p>
+      <p>
+        I’m a Senior Front-End Engineer with over 9 years of experience
+        building intuitive, data-driven, and scalable web applications. I
+        specialize in React.js, TypeScript, and performance-optimized UIs,
+        often collaborating with ML teams to deliver AI-integrated user
+        experiences. I thrive in fintech environments where data accuracy,
+        speed, and UX matter most.
+      </p>
     </section>
 
     <section id="experience">
@@ -206,9 +286,18 @@
     <section id="skills">
       <h2>Skills</h2>
       <div class="skills">
-        <span>React.js</span><span>TypeScript</span><span>Redux</span><span>Jest</span><span>Cypress</span>
-        <span>GitHub Copilot</span><span>HTML5</span><span>CSS3</span><span>Kafka</span><span>AWS</span><span>Docker</span>
-        <span>Spring Boot</span>
+        <span>React.js</span
+        ><span>TypeScript</span
+        ><span>Redux</span
+        ><span>Jest</span
+        ><span>Cypress</span
+        ><span>GitHub Copilot</span
+        ><span>HTML5</span
+        ><span>CSS3</span
+        ><span>Kafka</span
+        ><span>AWS</span
+        ><span>Docker</span
+        ><span>Spring Boot</span>
       </div>
     </section>
 
@@ -218,5 +307,33 @@
       <a href="mailto:chetanpingale13@gmail.com" class="btn">📬 Email Me</a>
     </section>
   </main>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelectorAll('nav a');
+
+    function toggleMenu() {
+      navLinks.forEach((link) => {
+        link.classList.toggle('show');
+      });
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    // Support keyboard accessibility (Enter and Space keys)
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    // Close menu when a nav link is clicked (mobile UX)
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.forEach((l) => l.classList.remove('show'));
+      });
+    });
+  </script>
 </body>
 </html>
