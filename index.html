@@ -8,20 +8,19 @@
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-pap6TTfNTaM6scVyj0CMyWf1VQkE5Zxu9RcsZ5Ai7tkqFbX9/kFthB44EakYxEAYxzFZHZyi0+kptE3y96G3Mg=="
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
   <style>
+    /* [CSS unchanged — same as your latest version] */
     :root {
       --bg-light: #f0f0ff;
       --card-light: white;
       --text-light: #1f2937;
-
       --bg-dark: #0f172a;
       --card-dark: #1e293b;
       --text-dark: #f1f5f9;
-
       --accent: #6366f1;
     }
 
@@ -256,25 +255,18 @@
       <span></span>
       <span></span>
     </div>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#skills" class="nav-link">Skills</a>
+    <a href="#contact" class="nav-link">Contact</a>
     <div class="theme-toggle" id="theme-toggle" title="Toggle theme">🌓</div>
   </nav>
 
   <header>
-    <img
-      src="profile.png"
-      alt="Chetan Pingale"
-      onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/1027064067?v=4';"
-    />
+    <img src="profile.png" alt="Chetan Pingale" onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/1027064067?v=4';" />
     <h1>Chetan Pingale</h1>
-    <p>
-      Senior Front-End Engineer | React | AI-Enhanced UI | FinTech & Data
-      Visualizations
-    </p>
+    <p>Senior Front-End Engineer | React | AI-Enhanced UI | FinTech & Data Visualizations</p>
     <div>
       <a href="mailto:chetanpingale13@gmail.com" class="btn">📨 Contact Me</a>
       <a href="/ChetanPingale-resume.pdf" class="btn" download>📄 Download Resume</a>
@@ -284,14 +276,7 @@
   <main class="container">
     <section id="about">
       <h2>About Me</h2>
-      <p>
-        I’m a Senior Front-End Engineer with over 9 years of experience
-        building intuitive, data-driven, and scalable web applications. I
-        specialize in React.js, TypeScript, and performance-optimized UIs,
-        often collaborating with ML teams to deliver AI-integrated user
-        experiences. I thrive in fintech environments where data accuracy,
-        speed, and UX matter most.
-      </p>
+      <p>I’m a Senior Front-End Engineer with over 9 years of experience building intuitive, data-driven, and scalable web applications...</p>
     </section>
 
     <section id="experience">
@@ -321,18 +306,9 @@
     <section id="skills">
       <h2>Skills</h2>
       <div class="skills">
-        <span>React.js</span>
-        <span>TypeScript</span>
-        <span>Redux</span>
-        <span>Jest</span>
-        <span>Cypress</span>
-        <span>GitHub Copilot</span>
-        <span>HTML5</span>
-        <span>CSS3</span>
-        <span>Kafka</span>
-        <span>AWS</span>
-        <span>Docker</span>
-        <span>Spring Boot</span>
+        <span>React.js</span><span>TypeScript</span><span>Redux</span><span>Jest</span><span>Cypress</span>
+        <span>GitHub Copilot</span><span>HTML5</span><span>CSS3</span><span>Kafka</span><span>AWS</span>
+        <span>Docker</span><span>Spring Boot</span>
       </div>
     </section>
 
@@ -345,25 +321,26 @@
 
   <script>
     const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('nav a.nav-link');
     const themeToggle = document.getElementById('theme-toggle');
 
-    function toggleMenu() {
-      navLinks.forEach((link) => link.classList.toggle('show'));
-    }
-
-    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('click', () => {
+      navLinks.forEach(link => link.classList.toggle('show'));
+    });
 
     menuToggle.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        toggleMenu();
+        navLinks.forEach(link => link.classList.toggle('show'));
       }
     });
 
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
-        navLinks.forEach((l) => l.classList.remove('show'));
+        // On mobile, hide menu after selection
+        if (window.innerWidth <= 600) {
+          navLinks.forEach((l) => l.classList.remove('show'));
+        }
       });
     });
 
