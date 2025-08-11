@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chetan Pingale – Senior Front-End Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --bg-light: #f0f0ff;
@@ -21,18 +18,25 @@
       --card-dark: #1e293b;
       --text-dark: #f1f5f9;
       --accent: #6366f1;
+      --source-code-link-color-light: #3498db;
+      --source-code-link-color-dark: #8bc34a;
+
     }
 
     html[data-theme='light'] {
       --bg: var(--bg-light);
       --card: var(--card-light);
       --text: var(--text-light);
+      --source-code-link-color: var(--source-code-link-color-light);
+
     }
 
     html[data-theme='dark'] {
       --bg: var(--bg-dark);
       --card: var(--card-dark);
       --text: var(--text-dark);
+      --source-code-link-color: var(--source-code-link-color-dark);
+
     }
 
     * {
@@ -106,7 +110,7 @@
       color: var(--text);
       padding: 0.75rem 1rem;
       border-radius: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
       cursor: pointer;
       font-size: 1.5rem;
       display: flex;
@@ -135,7 +139,7 @@
       color: var(--text);
       padding: 0.75rem 1rem;
       border-radius: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
       cursor: pointer;
       font-size: 1.5rem;
       display: flex;
@@ -270,11 +274,25 @@
       text-align: center;
     }
 
+    .source-code-link {
+      color: var(--source-code-link-color);
+    }
+
+    .social-links i {
+      font-size: 24px;
+      margin: 3px;
+    }
+
+    .social-link {
+      color: var(--source-code-link-color);
+    }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -307,6 +325,7 @@
     }
   </style>
 </head>
+
 <body>
   <nav>
     <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" role="button" tabindex="0">
@@ -322,7 +341,8 @@
   </nav>
 
   <header>
-    <img src="profile.png" alt="Chetan Pingale" onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/1027064067?v=4';" />
+    <img src="profile.png" alt="Chetan Pingale"
+      onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/1027064067?v=4';" />
     <h1>Chetan Pingale</h1>
     <p>Senior Front-End Engineer | React | AI-Enhanced UI | FinTech & Data Visualizations</p>
     <div>
@@ -334,7 +354,13 @@
   <main class="container">
     <section id="about">
       <h2>About Me</h2>
-      <p>I’m a Senior Front-End Engineer with over 9 years of experience building intuitive, data-driven, and scalable web applications...</p>
+      <p>I am a passionate Senior Software Engineer with over a decade of experience designing and building scalable,
+        user-centric web applications. Skilled in React, TypeScript, and modern frontend technologies, I specialize in
+        creating high-performance, accessible interfaces that drive user engagement and business value. Throughout my
+        career, I have successfully led UI revamps for major fintech platforms, mentored junior developers, and
+        continuously optimized development workflows to deliver faster, cleaner code. I thrive in collaborative
+        environments and enjoy solving complex problems with elegant, reusable solutions.</p>
+      <p>When I’m not coding, I enjoy exploring the latest tech trends and continuously expanding my skills.</p>
     </section>
 
     <section id="experience">
@@ -351,39 +377,87 @@
         <li>Led fintech dashboard revamp increasing usage by 35%</li>
         <li>Mentored junior devs and embedded performance profiling into workflow</li>
       </ul>
+      <h3>Senior Software Engineer – Tieto India Private Limited (2018 – 2020)</h3>
+      <ul>
+        <li>Improved accessibility across 50+ UI components</li>
+        <li>Led fintech dashboard revamp increasing usage by 35%</li>
+        <li>Mentored junior devs and embedded performance profiling into workflow</li>
+      </ul>
+      <h3>Senior Software Engineer – Inteliment Technologies (2017 – 2018)</h3>
+      <ul>
+        <li>Improved accessibility across 50+ UI components</li>
+        <li>Led fintech dashboard revamp increasing usage by 35%</li>
+        <li>Mentored junior devs and embedded performance profiling into workflow</li>
+      </ul>
+      <h3>Software Developer – Synerzip Softech India Private Limited (2013 – 2016)</h3>
+      <ul>
+        <li>Developed accessible UI components, improving product usability and reach.</li>
+        <li>Contributed to fintech dashboard enhancements that increased user engagement significantly.</li>
+        <li>Supported team growth by mentoring junior developers and embedding profiling tools.</li>
+      </ul>
     </section>
 
     <section id="projects">
       <h2>Projects</h2>
-      <h3>🔍 AI Dashboard – JPMC</h3>
-      <p>Built a modular LLM-powered UI dashboard with dynamic charts and predictive prompts.</p>
+      <h3>🖥️ User Dashboard – Personal Project</h3>
+      <p>Built a modern, accessible, and scalable user dashboard using React, TypeScript, Vite, and Tailwind CSS to
+        deliver a high-performance and responsive web application.</p>
+      <p>
+        <a href="https://chetanpingale.github.io/user-dashboard/" class="source-code-link" target="_blank"
+          rel="noopener noreferrer">Live
+          Demo</a> |
+        <a href="https://github.com/chetanpingale/user-dashboard" class="source-code-link" target="_blank"
+          rel="noopener noreferrer">Source
+          Code</a>
+      </p>
       <h3>💼 Developer Portal – Goldman Sachs</h3>
-      <p>Re-architected DevPortal UI using React & TypeScript, achieving accessibility compliance and enhanced responsiveness.</p>
+      <p>Contributed to the redevelopment of the DevPortal website using React and TypeScript, enhancing accessibility
+        and improving responsiveness.</p>
+      <p><a href="https://developer.gs.com/discover/home" class="source-code-link" target="_blank"
+          rel="noopener noreferrer">Live Demo</a></p>
     </section>
 
     <section id="skills">
       <h2>Skills</h2>
       <div class="skills">
-        <span>React.js</span><span>TypeScript</span><span>Redux</span><span>Jest</span><span>Cypress</span>
-        <span>GitHub Copilot</span><span>HTML5</span><span>CSS3</span><span>Kafka</span><span>AWS</span>
-        <span>Docker</span><span>Spring Boot</span>
+        <span>JavaScript (ES6+)</span><span>TypeScript</span><span>Java</span><span>HTML5</span><span>CSS3</span>
+        <span>React.js</span><span>Angular</span><span>Next.js</span><span>Node.js</span><span>Express.js</span><span>Spring
+          Boot</span>
+        <span>Microservices</span><span>Kafka</span><span>Redux</span><span>Responsive Design</span><span>Tailwind
+          CSS</span><span>Vite</span><span>Webpack</span><span>Docker</span><span>CI/CD Pipelines</span>
+        <span>AWS</span><span>Kubernetes</span><span>MongoDB</span><span>PostgreSQL</span><span>MySQL</span>
+        <span>REST APIs</span><span>GraphQL</span><span>React Testing
+          Library</span><span>Jest</span><span>Cypress</span><span>Git</span><span>GitHub Copilot
+        </span><span>Performance Profiling</span><span>Agile</span><span>Scrum</span><span>Accessibility (WCAG)</span>
       </div>
+
     </section>
 
     <section id="contact" class="contact">
       <h2>Get In Touch</h2>
       <p>Have a project in mind or want to collaborate? Let’s talk!</p>
       <a href="mailto:chetanpingale13@gmail.com" class="btn">📬 Email Me</a>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/chetanpingale/" class="social-link" target="_blank"
+          title="LinkedIn Profile">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/chetanpingale" class="social-link" target="_blank" title="GitHub Profile">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
     </section>
   </main>
 
   <!-- Fixed theme toggle button -->
-  <div class="theme-toggle-fixed" id="theme-toggle" title="Toggle theme" role="button" tabindex="0" aria-label="Toggle dark/light theme">
+  <div class="theme-toggle-fixed" id="theme-toggle" title="Toggle theme" role="button" tabindex="0"
+    aria-label="Toggle dark/light theme">
     <i class="fas fa-moon"></i>
   </div>
 
   <!-- Scroll to top button -->
-  <div class="scroll-top-btn" id="scroll-top-btn" title="Scroll to top" role="button" tabindex="0" aria-label="Scroll to top">
+  <div class="scroll-top-btn" id="scroll-top-btn" title="Scroll to top" role="button" tabindex="0"
+    aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
   </div>
 
@@ -407,22 +481,22 @@
     });
 
     navLinks.forEach(link => {
-	  link.addEventListener('click', (e) => {
-	    e.preventDefault(); // prevent default href navigation (which changes URL hash)
-	    const targetId = link.getAttribute('data-target');
-	    if (!targetId) return;
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); // prevent default href navigation (which changes URL hash)
+        const targetId = link.getAttribute('data-target');
+        if (!targetId) return;
 
-	    const targetElement = document.getElementById(targetId);
-	    if (targetElement) {
-	      targetElement.scrollIntoView({ behavior: 'smooth' });
-	    }
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
 
-	    // On mobile, hide menu after selection (optional)
-	    if (window.innerWidth <= 600) {
-	      navLinks.forEach(l => l.classList.remove('show'));
-	    }
-	  });
-	});
+        // On mobile, hide menu after selection (optional)
+        if (window.innerWidth <= 600) {
+          navLinks.forEach(l => l.classList.remove('show'));
+        }
+      });
+    });
 
     // Theme toggle logic with icon update
     function updateThemeIcon() {
@@ -468,4 +542,5 @@
     });
   </script>
 </body>
+
 </html>
